@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
-import NavItem from "./navItem";
-import { IoChevronDownCircleOutline } from "react-icons/io5";
-import { AiOutlineBell } from "react-icons/ai";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2"
+
+import NavItem from "./NavItem";
 import MobileMenu from "../MobileMenu";
 import AccountMenu from "../AccountMenu";
+
+import { AiOutlineBell } from "react-icons/ai";
+import { IoChevronDownCircleOutline } from "react-icons/io5";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2"
+
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
