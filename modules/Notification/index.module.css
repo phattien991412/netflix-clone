@@ -1,0 +1,9 @@
+.popup {
+    background: #000 !important;
+    border-radius: 10px !important;
+}
+
+.title {
+    color: gold !important;
+    font-size: 18px !important;
+}
