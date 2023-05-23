@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
 import Header from "../Header";
+import Footer from "../Footer";
 
 const Layout = ({ children }) => {
 
@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <div>
       <Header/>
       <main>{ children }</main>
-      
+      <Footer/>
     </div>
   );
 };

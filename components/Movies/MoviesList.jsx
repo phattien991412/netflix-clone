@@ -11,7 +11,7 @@ const MoviesList = ({ data, title, setLoading }) => {
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
           {title}
         </p>
-        <div className=" ">
+        <div className="overflow-hidden lg:overflow-visible">
           <Swiper
             spaceBetween={10}
             slidesPerView={4}

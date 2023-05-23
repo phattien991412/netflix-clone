@@ -11,7 +11,7 @@ const MovieItem = ({ data, setLoading }) => {
     [router, data.id]
   );
   return (
-    <div className="group bg-zinc-900 col-span relative h-[12vw]">
+    <div className="group bg-zinc-900 col-span relative lg:h-[300px] h-[200px]">
       <img
         onClick={redirectToWatch}
         src={data.thumbnailUrl}
@@ -27,8 +27,6 @@ const MovieItem = ({ data, setLoading }) => {
         group-hover:opacity-90
         sm:group-hover:opacity-0
         delay-300
-        w-full
-        h-[12vw]
         z-10
       "
       />
@@ -63,8 +61,6 @@ const MovieItem = ({ data, setLoading }) => {
           duration
           shadow-xl
           rounded-t-md
-          w-full
-          h-[12vw]
           z-10
         "
         />

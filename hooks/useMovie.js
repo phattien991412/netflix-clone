@@ -6,7 +6,8 @@ const useMovies = () => {
   const { data, error, isLoading, mutate } = useSWR("api/movies", fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
-    revalidateOnReconnect: false
+    revalidateOnReconnect: false,
+    shouldRetryOnError:false
   });
 
   return {

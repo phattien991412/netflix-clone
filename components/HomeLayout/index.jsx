@@ -23,7 +23,7 @@ const HomeLayout = () => {
   return (
     <>
       <BillBoard />
-      <div className="pb-40">
+      <div className="pb-8">
         {loading && <Loading />}
         <MoviesList
           title="Trending Now"
