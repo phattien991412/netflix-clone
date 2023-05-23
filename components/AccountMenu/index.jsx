@@ -16,7 +16,7 @@ const AccountMenu = ({ visible }) => {
           <img
             className="w-8 rounded-md"
             src="/images/default-blue.png"
-            alt=""
+            alt="avatar"
           />
           <p className="text-white text-sm group-hover/item:underline">
             {currentUser?.name}

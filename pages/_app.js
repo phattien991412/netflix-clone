@@ -1,4 +1,5 @@
 import { Provider } from "react-redux";
+import { SessionProvider } from "next-auth/react";
 import { persistor, store } from "@/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -13,16 +14,21 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/effect-coverflow";
 
-export default function App({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps }
+}) {
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <SEO/>
-          {getLayout(<Component {...pageProps} />)}
-        </PersistGate>
-      </Provider>
+      <SessionProvider session={session}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <SEO />
+            {getLayout(<Component {...pageProps} />)}
+          </PersistGate>
+        </Provider>
+      </SessionProvider>
     </>
   );
 }

@@ -77,7 +77,7 @@ const Header = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-md overflow-hidden mx-4">
-              <img src="/images/default-blue.png" alt="" />
+              <img src="/images/default-blue.png" alt="avatar" />
             </div>
             <IoChevronDownCircleOutline
               className={`w-8 h-8 text-white fill-white transition ${

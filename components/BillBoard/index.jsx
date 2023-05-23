@@ -1,5 +1,5 @@
 import useBillBoard from "@/hooks/useBillBoard";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import PlayButton from "../Button/PlayButton";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import Modal from "../Modal";
