@@ -67,6 +67,14 @@ img {
   display: block;
 }
 
+.swiper {
+  overflow: unset !important;
+}
+
+.swiper-slide:hover {
+  z-index: 99;
+}
+
 .loading {
   position: fixed;
   top: 0;

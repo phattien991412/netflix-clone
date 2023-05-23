@@ -29,6 +29,7 @@ const MovieItem = ({ data, setLoading }) => {
         delay-300
         w-full
         h-[12vw]
+        z-10
       "
       />
       <div
@@ -38,7 +39,7 @@ const MovieItem = ({ data, setLoading }) => {
         top-0
         transition
         duration-200
-        z-10
+        z-20
         invisible
         sm:visible
         delay-300
@@ -64,6 +65,7 @@ const MovieItem = ({ data, setLoading }) => {
           rounded-t-md
           w-full
           h-[12vw]
+          z-10
         "
         />
         <div
