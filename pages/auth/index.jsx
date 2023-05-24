@@ -38,6 +38,9 @@ const Auth = () => {
 
   const [variant, setVariant] = useState("login");
 
+  const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const checkPass = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.{8,})\S+$/;
+
   const handleOnchange = (value, type) => {
     setValueInput({
       ...valueInput,
@@ -52,6 +55,7 @@ const Auth = () => {
   }, []);
 
   const login = useCallback(async () => {
+    if(!regexEmail.test(valueInput.email) || !checkPass.test(valueInput.password)) return;
     setIsLogin(true);
     try {
       const res = await signIn("credentials", {
@@ -120,31 +124,42 @@ const Auth = () => {
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === "login" ? "Sign in" : "Register"}
             </h2>
-            <div className="flex flex-col gap-4">
-              {variant === "register" && (
+            <form onSubmit={variant === "login" && login}>
+              <div className="flex flex-col gap-4">
+                {variant === "register" && (
+                  <Input
+                    id="name"
+                    type="text"
+                    label="Username"
+                    value={valueInput.name}
+                    onChange={(e) => handleOnchange(e.target.value, "name")}
+                  />
+                )}
                 <Input
-                  id="name"
-                  type="text"
-                  label="Username"
-                  value={valueInput.name}
-                  onChange={(e) => handleOnchange(e.target.value, "name")}
+                  id="email"
+                  type="email"
+                  label="Email address or phone number"
+                  value={valueInput.email}
+                  onChange={(e) => handleOnchange(e.target.value, "email")}
                 />
-              )}
-              <Input
-                id="email"
-                type="email"
-                label="Email address or phone number"
-                value={valueInput.email}
-                onChange={(e) => handleOnchange(e.target.value, "email")}
-              />
-              <Input
-                type="password"
-                id="password"
-                label="Password"
-                value={valueInput.password}
-                onChange={(e) => handleOnchange(e.target.value, "password")}
-              />
-            </div>
+                {variant === "register" && !regexEmail.test(valueInput.email) ? (
+                  <span className="text-red-500">Wrong email format</span>
+                ) : null}
+                <Input
+                  type="password"
+                  id="password"
+                  label="Password"
+                  value={valueInput.password}
+                  onChange={(e) => handleOnchange(e.target.value, "password")}
+                />
+                {(valueInput.password && !checkPass.test(valueInput.password)) && (
+                  <span className="text-red-500">
+                    Password must contains 1 capital, 1 special, 1 number, 8+
+                    characters.{" "}
+                  </span>
+                )}
+              </div>
+            </form>
             <button
               onClick={variant === "login" ? login : register}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
