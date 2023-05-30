@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from 'next/router';
+
 import { FaPlay } from "react-icons/fa";
 const PlayButton = ({ movieId }) => {
   const router = useRouter();

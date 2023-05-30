@@ -22,12 +22,12 @@ export default function App({
   return (
     <>
       <SessionProvider session={session}>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+        {/* <Provider store={store}> */}
+          {/* <PersistGate loading={null} persistor={persistor}> */}
             <SEO />
             {getLayout(<Component {...pageProps} />)}
-          </PersistGate>
-        </Provider>
+          {/* </PersistGate> */}
+        {/* </Provider> */}
       </SessionProvider>
     </>
   );

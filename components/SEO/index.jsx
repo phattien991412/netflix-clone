@@ -1,6 +1,8 @@
 import Head from "next/head";
 import React from "react";
+
 import logo from "@/public/images/logo2.png"
+
 const SEO = () => {
   return (
     <Head>

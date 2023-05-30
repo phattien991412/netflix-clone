@@ -1,9 +1,11 @@
-import useBillBoard from "@/hooks/useBillBoard";
 import React, { useState } from "react";
-import PlayButton from "../Button/PlayButton";
+
 import { AiOutlineInfoCircle } from "react-icons/ai";
+
 import Modal from "../Modal";
 import Loading from "../Loading/loading";
+import PlayButton from "../Button/PlayButton";
+import useBillBoard from "@/hooks/useBillBoard";
 
 const BillBoard = () => {
   const { data } = useBillBoard();

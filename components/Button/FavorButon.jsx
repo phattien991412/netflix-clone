@@ -1,9 +1,12 @@
+import React, { useCallback, useMemo, useState } from "react";
+
+import axios from "axios";
+
+import { AiOutlineCheck, AiOutlinePlus } from "react-icons/ai"
+
 import useFavorites from "@/hooks/useFavorites";
 import useUserCurrent from "@/hooks/useUserCurrent";
 import { NotificationToast } from "@/modules/Notification";
-import axios from "axios";
-import React, { useCallback, useMemo, useState } from "react";
-import { AiOutlineCheck, AiOutlinePlus } from "react-icons/ai"
 
 const FavoriteButton = ({ movieId, setLoading }) => {
   const { mutate: mutateFavorites } = useFavorites();

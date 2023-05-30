@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+
 import BillBoard from "../BillBoard";
-import MoviesList from "../Movies/MoviesList";
-import useMovies from "@/hooks/useMovie";
-import useFavorites from "@/hooks/useFavorites";
 import Loading from "../Loading/loading";
+import useMovies from "@/hooks/useMovie";
+import MoviesList from "../Movies/MoviesList";
+import useFavorites from "@/hooks/useFavorites";
 
 const HomeLayout = () => {
   const [loading, setLoading] = useState(false);
