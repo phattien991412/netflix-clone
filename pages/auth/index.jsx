@@ -54,14 +54,19 @@ const Auth = () => {
     );
   }, []);
 
-  const login = useCallback(async () => {
-    if(!regexEmail.test(valueInput.email) || !checkPass.test(valueInput.password)) return;
+  const login = useCallback(async (e) => {
+    e.preventDefault();
+    if (
+      !regexEmail.test(valueInput.email) ||
+      !checkPass.test(valueInput.password)
+    )
+      return;
     setIsLogin(true);
     try {
       const res = await signIn("credentials", {
         email: valueInput.email,
         password: valueInput.password,
-        redirect: false,
+        redirect: true,
         callbackUrl: "/"
       });
 
@@ -88,7 +93,8 @@ const Auth = () => {
     }
   }, [valueInput.name, valueInput.email, valueInput.password, router]);
 
-  const register = useCallback(async () => {
+  const register = useCallback(async (e) => {
+    e.preventDefault();
     setIsLogin(true);
     try {
       const res = await axios.post("/api/register", {
@@ -142,7 +148,9 @@ const Auth = () => {
                   value={valueInput.email}
                   onChange={(e) => handleOnchange(e.target.value, "email")}
                 />
-                {variant === "register" && !regexEmail.test(valueInput.email) ? (
+                {variant === "register" &&
+                !regexEmail.test(valueInput.email) &&
+                valueInput.email ? (
                   <span className="text-red-500">Wrong email format</span>
                 ) : null}
                 <Input
@@ -152,29 +160,32 @@ const Auth = () => {
                   value={valueInput.password}
                   onChange={(e) => handleOnchange(e.target.value, "password")}
                 />
-                {(valueInput.password && !checkPass.test(valueInput.password)) && (
-                  <span className="text-red-500">
-                    Password must contains 1 capital, 1 special, 1 number, 8+
-                    characters.{" "}
-                  </span>
-                )}
+                {valueInput.password &&
+                  !checkPass.test(valueInput.password) && (
+                    <span className="text-red-500">
+                      Password must contains 1 capital, 1 special, 1 number, 8+
+                      characters.{" "}
+                    </span>
+                  )}
               </div>
+              <button
+                onClick={variant === "login" ? login : register}
+                type="submit"
+                className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+              >
+                {isLogin ? (
+                  <span className="grid place-items-center">
+                    {" "}
+                    <AiOutlineLoading3Quarters className="animate-spin text-2xl" />{" "}
+                  </span>
+                ) : variant === "login" ? (
+                  "Sign in"
+                ) : (
+                  "Register"
+                )}
+              </button>
             </form>
-            <button
-              onClick={variant === "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
-            >
-              {isLogin ? (
-                <span className="grid place-items-center">
-                  {" "}
-                  <AiOutlineLoading3Quarters className="animate-spin text-2xl" />{" "}
-                </span>
-              ) : variant === "login" ? (
-                "Sign in"
-              ) : (
-                "Register"
-              )}
-            </button>
+
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
               <div
                 onClick={() => signIn("google", { callbackUrl: "/profile" })}

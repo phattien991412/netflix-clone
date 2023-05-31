@@ -21,7 +21,7 @@ export default function App({
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <>
-      <SessionProvider session={session}>
+      <SessionProvider session={session} refetchInterval={5 * 60} refetchOnWindowFocus={true}>
         {/* <Provider store={store}> */}
           {/* <PersistGate loading={null} persistor={persistor}> */}
             <SEO />
