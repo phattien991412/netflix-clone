@@ -54,70 +54,76 @@ const Auth = () => {
     );
   }, []);
 
-  const login = useCallback(async (e) => {
-    e.preventDefault();
-    if (
-      !regexEmail.test(valueInput.email) ||
-      !checkPass.test(valueInput.password)
-    )
-      return;
-    setIsLogin(true);
-    try {
-      const res = await signIn("credentials", {
-        email: valueInput.email,
-        password: valueInput.password,
-        redirect: true,
-        callbackUrl: "/"
-      });
+  const login = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (
+        !regexEmail.test(valueInput.email) ||
+        !checkPass.test(valueInput.password)
+      )
+        return;
+      setIsLogin(true);
+      try {
+        const res = await signIn("credentials", {
+          email: valueInput.email,
+          password: valueInput.password,
+          redirect: true,
+          callbackUrl: "/"
+        });
 
-      if (res.status === 200) {
-        NotificationToast.fire({
-          toast: true,
-          position: "top-right",
-          icon: "success",
-          title: `Login success`
-        });
-        router.push("/profile");
-      } else {
-        NotificationToast.fire({
-          toast: true,
-          position: "top-right",
-          icon: "error",
-          title: `${res?.error}`
-        });
+        if (res.status === 200) {
+          NotificationToast.fire({
+            toast: true,
+            position: "top-right",
+            icon: "success",
+            title: `Login success`
+          });
+          router.push("/profile");
+        } else {
+          NotificationToast.fire({
+            toast: true,
+            position: "top-right",
+            icon: "error",
+            title: `${res?.error}`
+          });
+        }
+        setIsLogin(false);
+      } catch (error) {
+        console.log(error);
+        setIsLogin(false);
       }
-      setIsLogin(false);
-    } catch (error) {
-      console.log(error);
-      setIsLogin(false);
-    }
-  }, [valueInput.name, valueInput.email, valueInput.password, router]);
+    },
+    [valueInput.name, valueInput.email, valueInput.password, router]
+  );
 
-  const register = useCallback(async (e) => {
-    e.preventDefault();
-    setIsLogin(true);
-    try {
-      const res = await axios.post("/api/register", {
-        email: valueInput.email,
-        name: valueInput.name,
-        password: valueInput.password
-      });
-
-      if (res.status === 200) {
-        NotificationToast.fire({
-          toast: true,
-          position: "top-right",
-          icon: "success",
-          title: `Welcome to Netflix`
+  const register = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setIsLogin(true);
+      try {
+        const res = await axios.post("/api/register", {
+          email: valueInput.email,
+          name: valueInput.name,
+          password: valueInput.password
         });
-        login();
+
+        if (res.status === 200) {
+          NotificationToast.fire({
+            toast: true,
+            position: "top-right",
+            icon: "success",
+            title: `Welcome to Netflix`
+          });
+          login();
+        }
+        setIsLogin(false);
+      } catch (error) {
+        console.log(error);
+        setIsLogin(false);
       }
-      setIsLogin(false);
-    } catch (error) {
-      console.log(error);
-      setIsLogin(false);
-    }
-  }, [valueInput.name, valueInput.email, valueInput.password, login]);
+    },
+    [valueInput.name, valueInput.email, valueInput.password, login]
+  );
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -148,9 +154,7 @@ const Auth = () => {
                   value={valueInput.email}
                   onChange={(e) => handleOnchange(e.target.value, "email")}
                 />
-                {variant === "register" &&
-                !regexEmail.test(valueInput.email) &&
-                valueInput.email ? (
+                {!regexEmail.test(valueInput.email) && valueInput.email ? (
                   <span className="text-red-500">Wrong email format</span>
                 ) : null}
                 <Input
