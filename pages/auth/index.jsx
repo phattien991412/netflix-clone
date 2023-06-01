@@ -67,7 +67,7 @@ const Auth = () => {
         const res = await signIn("credentials", {
           email: valueInput.email,
           password: valueInput.password,
-          redirect: true,
+          redirect: false,
           callbackUrl: "/profile"
         });
 

@@ -32,7 +32,7 @@ export const getServerSideProps = async (ctx) => {
       return {
         redirect: {
           destination: "/auth",
-          parnament: false
+          permanent: false
         }
       }
     }
