@@ -26,8 +26,8 @@ export const getServerSideProps = async (ctx) => {
 
 const Profile = () => {
   const router = useRouter();
-  const { data: currentUser } = useUserCurrent();
-
+  const { data: currentUser, mutate: mutateUser, isLoading } = useUserCurrent();
+  
   const selectProfile = useCallback(() => {
     router.push('/');
   }, [router]);
@@ -40,8 +40,8 @@ const Profile = () => {
       <div className="flex flex-col">
         <h1 className="text-3xl md:text-6xl text-white text-center">Who&#39;s watching?</h1>
         <div className="flex items-center justify-center gap-8 mt-10">
-          <div onClick={() => selectProfile()}>
-            <CardUser name={currentUser?.name} />
+          <div>
+            <CardUser name={currentUser?.name} mutateUser={mutateUser} selectProfile={selectProfile} />
           </div>
         </div>
       </div>

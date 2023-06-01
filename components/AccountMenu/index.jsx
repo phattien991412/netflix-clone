@@ -2,8 +2,10 @@ import React from "react";
 import { signOut } from 'next-auth/react';
 
 import useUserCurrent from "@/hooks/useUserCurrent";
+import { useRouter } from "next/router";
 
 const AccountMenu = ({ visible }) => {
+  const route = useRouter()
     const { data: currentUser } = useUserCurrent();
 
     if (!visible) {
@@ -12,7 +14,7 @@ const AccountMenu = ({ visible }) => {
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
-        <div className="px-3 group/item flex flex-row gap-3 items-center w-full">
+        <div onClick={() => route.push("/profile")} className="px-3 group/item flex flex-row gap-3 items-center w-full">
           <img
             className="w-8 rounded-md"
             src="/images/default-blue.png"

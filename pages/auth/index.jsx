@@ -56,7 +56,7 @@ const Auth = () => {
 
   const login = useCallback(
     async (e) => {
-      e.preventDefault();
+      e?.preventDefault();
       if (
         !regexEmail.test(valueInput.email) ||
         !checkPass.test(valueInput.password)
@@ -68,7 +68,7 @@ const Auth = () => {
           email: valueInput.email,
           password: valueInput.password,
           redirect: true,
-          callbackUrl: "/"
+          callbackUrl: "/profile"
         });
 
         if (res.status === 200) {
@@ -91,6 +91,12 @@ const Auth = () => {
       } catch (error) {
         console.log(error);
         setIsLogin(false);
+        NotificationToast.fire({
+          toast: true,
+          position: "top-right",
+          icon: "error",
+          title: `${error?.response?.data.error}`
+        });
       }
     },
     [valueInput.name, valueInput.email, valueInput.password, router]
@@ -113,13 +119,25 @@ const Auth = () => {
             position: "top-right",
             icon: "success",
             title: `Welcome to Netflix`
-          });
+          }) 
           login();
+        } else {
+          NotificationToast.fire({
+            toast: true,
+            position: "top-right",
+            icon: "error",
+            title: `${res?.error}`
+          });
         }
         setIsLogin(false);
       } catch (error) {
-        console.log(error);
         setIsLogin(false);
+        NotificationToast.fire({
+          toast: true,
+          position: "top-right",
+          icon: "error",
+          title: `${error?.response?.data.error}`
+        });
       }
     },
     [valueInput.name, valueInput.email, valueInput.password, login]
