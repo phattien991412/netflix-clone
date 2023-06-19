@@ -14,7 +14,6 @@ export default function Home({ }) {
       <HomeLayout
 
       />
-      <button onClick={signOut}>Logout</button>
     </>
   );
 }

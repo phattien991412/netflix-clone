@@ -119,7 +119,7 @@ const Auth = () => {
             position: "top-right",
             icon: "success",
             title: `Welcome to Netflix`
-          }) 
+          });
           login();
         } else {
           NotificationToast.fire({
@@ -145,12 +145,26 @@ const Auth = () => {
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
+      <div className="absolute top-0 right-0 text-white bg-black/70 lg:block hidden h-auto w-[420px] ">
+        <div className="p-10">
+          <p>
+            Hi, if you received a warning from your browser, don't worry. <br /><br />
+            You can use a fake email/password to sign up, and your password will
+            be completely hashed. <br /> <br /> Alternatively, you can use this account to log
+            in:
+          </p>
+          <p>
+            Email: admin@gmail.com <br />
+            Password: Admin@123
+          </p>
+        </div>
+      </div>
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img src="/images/logo.png" className="w-28 h-14" alt="Logo" />
         </nav>
         <div className="flex justify-center">
-          <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
+          <div className="bg-black/70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === "login" ? "Sign in" : "Register"}
             </h2>

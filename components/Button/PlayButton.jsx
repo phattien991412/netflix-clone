@@ -23,7 +23,7 @@ const PlayButton = ({ movieId }) => {
         transition
         "
     >
-      <FaPlay className="w-4 md:w-7 text-black mr-1" />
+      <FaPlay className="text-lg text-black mr-1" />
       Play
     </button>
   );

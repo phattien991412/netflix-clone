@@ -82,7 +82,7 @@ const MovieItem = ({ data, setLoading }) => {
               onClick={redirectToWatch}
               className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300"
             >
-              <FaPlay className="text-black w-4 lg:w-6" />
+              <FaPlay className="text-black text-lg " />
             </div>
             <FavoriteButton movieId={data.id} setLoading={setLoading} />
             <div

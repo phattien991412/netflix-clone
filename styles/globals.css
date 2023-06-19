@@ -1,26 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,500&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-zinc-900 h-full overflow-x-hidden;
-}
-
 #__next {
   @apply h-full;
 }
-
-html {
-  @apply h-full;
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,500&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  @apply h-full;
+}
+
+html *::-webkit-scrollbar {
+  width: 9px;
+}
+
+html *::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+html *::-webkit-scrollbar-thumb {
+  background-color: rgb(131, 166, 209);
+  border-radius: 4px;
+}
+
+body {
+  @apply bg-zinc-900 h-full overflow-x-hidden;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 h1,
 h2,
@@ -39,30 +58,8 @@ ol {
   padding: 0;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  /* font-family: "Roboto Mono", monospace; */
-  scroll-behavior: smooth;
-}
-
-html *::-webkit-scrollbar {
-  width: 9px;
-}
-
-html *::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-html *::-webkit-scrollbar-thumb {
-  background-color: rgb(131, 166, 209);
-  border-radius: 4px;
-}
-
-img {
-  width: 100%;
+img, picture {
+    width: 100%;
   height: 100%;
   display: block;
 }
