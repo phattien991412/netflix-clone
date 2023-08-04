@@ -26,6 +26,7 @@ export async function getServerSideProps(context) {
     props: {}
   };
 }
+
 const Auth = () => {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
