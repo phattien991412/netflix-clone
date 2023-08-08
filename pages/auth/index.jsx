@@ -149,7 +149,7 @@ const Auth = () => {
       <div className="absolute top-0 right-0 text-white bg-black/70 lg:block hidden h-auto w-[420px] ">
         <div className="p-10">
           <p>
-            Hi, if you received a warning from your browser, don't worry. <br /><br />
+            {/* Hi, if you received a warning from your browser, don't worry. <br /><br /> */}
             You can use a fake email/password to sign up, and your password will
             be completely hashed. <br /> <br /> Alternatively, you can use this account to log
             in:
