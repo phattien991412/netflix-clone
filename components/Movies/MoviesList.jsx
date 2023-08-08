@@ -1,9 +1,6 @@
 import React from "react";
 import MovieItem from "./MovieItem";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-
 const MoviesList = ({ data, title, setLoading }) => {
   return (
     <div className="px-4 md:px-12 my-16 space-y-8">

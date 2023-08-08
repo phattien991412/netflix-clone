@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 
 import NavItem from "./NavItem";
@@ -44,15 +45,15 @@ const Header = () => {
           showBackground ? "bg-zinc-900/90" : ""
         }`}
       >
-        <img src="/images/logo.png" className="h-4 w-28 lg:h-7" alt="Logo" />
-        <div className="flex-row ml-8 gap-7 hidden lg:flex">
+        <Image width={112} height={28} src="/images/logo.png" className="h-4 w-28 lg:h-7" alt="Logo" />
+        <ul className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavItem label="Home" active />
           <NavItem label="Series" />
           <NavItem label="Films" />
           <NavItem label="New & Popular" />
           <NavItem label="My List" />
           <NavItem label="Browse by Languages" />
-        </div>
+        </ul>
         <div
           onClick={toggleMobileMenu}
           className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative"
