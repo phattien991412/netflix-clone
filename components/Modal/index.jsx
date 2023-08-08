@@ -6,6 +6,7 @@ import FavoriteButton from "../Button/FavorButon";
 
 const Modal = ({ movieInfo, setMovieInfo, setLoading }) => {
   const refModal = useRef();
+  const refClose = useRef();
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -13,7 +14,7 @@ const Modal = ({ movieInfo, setMovieInfo, setLoading }) => {
       body.style.overflowY = "hidden";
     }
     const handleClickOutside = (event) => {
-      if (refModal.current && !refModal.current.contains(event.target)) {
+      if (refModal.current && !refModal.current.contains(event.target) || refClose.current) {
         setMovieInfo({})
         body.style.overflowY = "auto";
       }
@@ -34,7 +35,7 @@ const Modal = ({ movieInfo, setMovieInfo, setLoading }) => {
 
           <div className="relative h-96">
             <video poster={movieInfo?.thumbnailUrl} autoPlay muted loop src={movieInfo?.videoUrl} className="w-full brightness-[60%] object-cover h-full" />
-            <div onClick={() => setMovieInfo({})} className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black bg-opacity-70 flex items-center justify-center">
+            <div ref={refClose} onClick={() => setMovieInfo({})} className="cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black bg-opacity-70 flex items-center justify-center">
               <AiOutlineClose className="text-white w-6" />
             </div>
             <div className="absolute bottom-[10%] left-10">
