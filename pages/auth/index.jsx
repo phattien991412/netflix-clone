@@ -146,7 +146,7 @@ const Auth = () => {
 
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
-      {/* <div className="absolute top-0 right-0 text-white bg-black/70 lg:block hidden h-auto w-[420px] ">
+      <div className="absolute top-0 right-0 text-white bg-black/70 lg:block hidden h-auto w-[420px] ">
         <div className="p-10">
           <p>
             Hi, if you received a warning from your browser, don't worry. <br /><br />
@@ -159,7 +159,7 @@ const Auth = () => {
             Password: Admin@123
           </p>
         </div>
-      </div> */}
+      </div>
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img src="/images/logo.png" className="w-28 h-14" alt="Logo" />
